@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import History from "../components/History"
+import MovieCard from "../components/MovieCard"
+import SearchResults from "../components/SearchResults"
 
 export default function Home(){
     const [search, setSearch] = useState()
@@ -52,6 +54,8 @@ export default function Home(){
                 {focused ? <History history={history} setSearch={setSearch}/> : null}
                 <button onClick={getMovies}>Søk</button>
             </form>
+            <MovieCard />
+            <SearchResults />
         </main>
     )
 }
