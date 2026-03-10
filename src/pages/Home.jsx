@@ -56,8 +56,8 @@ export default function Home({mvi}){
                 </label>
                 {focused ? <History history={history} setSearch={setSearch}/> : null}
             </form>
-            <SearchResults movie={movie}/>
                 <button onClick={getMovies}>Søk</button>
+            <SearchResults movie={movie}/>
         </main>
     )
 }
