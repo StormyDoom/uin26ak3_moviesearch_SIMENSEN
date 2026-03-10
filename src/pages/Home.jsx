@@ -3,7 +3,8 @@ import History from "../components/History"
 import MovieCard from "../components/MovieCard"
 import SearchResults from "../components/SearchResults"
 
-export default function Home(){
+export default function Home({mvi}){
+    const [movie, setMovie] = useState([])
     const [search, setSearch] = useState()
     const storedHistory = localStorage.getItem("search")
     const [focused, setFocused] = useState(false)
@@ -24,6 +25,7 @@ export default function Home(){
             const response = await fetch(`${baseUrl}${apiKey}`)
             const data = await response.json()
             console.log(data)
+            setMovie(data.Search)
         }
         catch(err){
             console.error(err);
@@ -42,6 +44,7 @@ export default function Home(){
         
     }
     console.log(history)
+    console.log("Denne kommer fra mvi", mvi)
     
     return (
         <main>
@@ -52,10 +55,9 @@ export default function Home(){
                     <input type="search" placeholder="Ratatouille" onChange={handleChange} onFocus={()=> setFocused(true)} /*onBlur={()=> setFocused(false)}*/></input>
                 </label>
                 {focused ? <History history={history} setSearch={setSearch}/> : null}
-                <button onClick={getMovies}>Søk</button>
             </form>
-            <MovieCard />
-            <SearchResults />
+            <SearchResults movie={movie}/>
+                <button onClick={getMovies}>Søk</button>
         </main>
     )
 }

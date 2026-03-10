@@ -40,3 +40,35 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Min CSS */
+
+.movie-cards {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 200px;
+  background-color: rgb(111, 17, 225);
+  
+
+  img{
+    margin: 1rem;
+  }
+
+  h4, p{
+    margin: 0rem;
+  }
+}
+
+.movie-section{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  h2{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

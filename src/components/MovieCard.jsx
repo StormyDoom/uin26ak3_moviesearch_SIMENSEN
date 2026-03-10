@@ -1,5 +1,10 @@
-export default function MovieCard(){
+export default function MovieCard({mvi}){
+    const {Title, Poster, Year} = mvi
     return (
-        <h1>MovieCard</h1>
+        <article className="movie-cards">
+            <h3>{Title}</h3>
+            <p>{Year}</p>
+            <img src={Poster} alt={Title}></img>
+        </article>
     )
 }
