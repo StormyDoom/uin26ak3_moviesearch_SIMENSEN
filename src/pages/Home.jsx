@@ -42,7 +42,7 @@ export default function Home({mvi}){
 
         {/*Funksjon som gjør at man må bruke 3 tegn for å få et søk er hentet fra CoPilot https://copilot.microsoft.com/chats/xkhq1pYNQ6UjnskJDp1rf */}
         {/*Før denne funksjonen, så måtte man fremdeles bruke 3 tegn før man fikk opp resultater*/}
-        if (value.length >= 3) {      
+        if (value.length >= 3) { 
             getMovies(value)         
         } else {
             setMovie([])
