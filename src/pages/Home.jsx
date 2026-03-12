@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
 import History from "../components/History"
-import MovieCard from "../components/MovieCard"
 import SearchResults from "../components/SearchResults"
 
 export default function Home({mvi}){
     const [movie, setMovie] = useState([])
-    const [search, setSearch] = useState()
+    const [search, setSearch] = useState("James-Bond")
     const storedHistory = localStorage.getItem("search")
     const [focused, setFocused] = useState(false)
     const [history, setHistory] = useState(storedHistory ? JSON.parse(storedHistory) : [])
@@ -24,20 +23,37 @@ export default function Home({mvi}){
         {
             const response = await fetch(`${baseUrl}${apiKey}`)
             const data = await response.json()
-            console.log(data)
             setMovie(data.Search)
+            console.log(data)
         }
         catch(err){
             console.error(err);
         }
     }
 
+    useEffect(()=>{
+        getMovies()
+    },[])
+
     const handleChange = (e)=> {
+        const value = e.target.value 
         setSearch(e.target.value)
+        setSearch(value)
+
+        {/*Funksjon som gjør at man må bruke 3 tegn for å få et søk er hentet fra CoPilot https://copilot.microsoft.com/chats/xkhq1pYNQ6UjnskJDp1rf */}
+        {/*Før denne funksjonen, så måtte man fremdeles bruke 3 tegn før man fikk opp resultater*/}
+        if (value.length >= 3) {      
+            getMovies(value)         
+        } else {
+            setMovie([])
+        }
     }
+
+    console.log(search)
 
     const handleSubmit = (e) =>{
         e.preventDefault()
+        if (search.length < 3) return
         e.target.reset()
 
         setHistory((prev) => [...prev, search])

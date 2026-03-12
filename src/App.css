@@ -41,14 +41,15 @@
   color: #888;
 }
 
-/* Min CSS */
+/* Min CSS, Jobbet med Fride Standal*/
 
 .movie-cards {
   display: flex;
   flex-direction: column;
   border-radius: 25px;
   width: 200px;
-  background-color: rgb(111, 17, 225);
+  background-color: rgb(196, 186, 209);
+  color: black;
   
 
   img{
