@@ -37,7 +37,6 @@ export default function Home({mvi}){
 
     const handleChange = (e)=> {
         const value = e.target.value 
-        setSearch(e.target.value)
         setSearch(value)
 
         {/*Funksjon som gjør at man må bruke 3 tegn for å få et søk er hentet fra CoPilot https://copilot.microsoft.com/chats/xkhq1pYNQ6UjnskJDp1rf */}
